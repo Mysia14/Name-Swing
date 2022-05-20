@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Codepen Challenge: Swing</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container" id="app">
+  <div class="blur"></div>
+  <div class="blocks-container">
+    <div v-scope="BlockLines()" id="blocks-1"></div>
+    <div v-scope="BlockLines()" id="blocks-2"></div>
+    <div v-scope="BlockLines()" id="blocks-3"></div>
+  </div>
+  <div v-scope="BlockTitle()"></div>
+</div>
+
+<template id="block-lines">
+  <div class="blocks">
+    <div class="block" v-for="blk in blocks" :key="blk">
+      <div id="blk-1"></div>
+      <div id="blk-2"></div>
+    </div>
+  </div>
+</template>
+
+<template id="block-title">
+  <div class="title">
+    <h1>{{ title }}</h1>
+    <div class="subtitle">
+      <h2> {{subtitle}}</h2>
+    </div>
+</template>
+<!-- partial -->
+  <script type="module" src="./script.js"></script>
+
+</body>
+</html>

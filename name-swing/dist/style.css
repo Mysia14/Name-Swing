@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  --blue: rgb(150, 0, 255);
+  --pink: rgb(255, 0, 193);
+  --black: rgb(19, 2, 25);
+  --lightblue: rgb(0, 255, 249);
+  --ease: cubic-bezier(0.8, -0, 0.2, 1);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Inconsolata", sans-serif;
+  background-color: var(--black);
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.title h1 {
+  color: var(--pink);
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: 2em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 2em;
+}
+.subtitle h2 {
+  color: var(--lightblue);
+  font-size: clamp(0.5rem, 1.5vw, 1rem);
+  letter-spacing: 2em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 2em;
+}
+
+.blocks-container {
+  perspective: 700px;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(-65deg);
+  z-index: 8;
+  width: 98vw;
+  height: 700px;
+  animation: rotateContainer 5s infinite var(--ease);
+}
+@keyframes rotateContainer {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotateY(-65deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateY(65deg);
+  }
+}
+
+.blocks {
+  perspective: 500px;
+  transform-style: preserve-3d;
+  position: absolute;
+  width: 98vw;
+  height: 700px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.block {
+  position: relative;
+  height: 100%;
+}
+
+#blk-1 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform-origin: 0% 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 5px;
+  height: 3px;
+  background-color: var(--pink);
+  animation: stretchBlock1 5s infinite var(--ease);
+}
+@keyframes stretchBlock1 {
+  0%,
+  100% {
+    width: 101%;
+    filter: blur(2px);
+  }
+  25%,
+  75% {
+    filter: blur(0px);
+  }
+  50% {
+    width: 0%;
+    filter: blur(0px);
+  }
+}
+#blk-2 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform-origin: 0% 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 5px;
+  height: 3px;
+  background-color: var(--lightblue);
+  animation: stretchBlock2 5s infinite var(--ease);
+}
+@keyframes stretchBlock2 {
+  0%,
+  100% {
+    width: 0%;
+    filter: blur(0px);
+  }
+  25%,
+  75% {
+    filter: blur(0px);
+  }
+  50% {
+    width: 101%;
+    filter: blur(2px);
+  }
+}
+
+#blocks-2 {
+  transform: translate3d(0px, 0px, -150px);
+}
+#blocks-3 {
+  transform: translate3d(0px, 0px, 150px);
+}
